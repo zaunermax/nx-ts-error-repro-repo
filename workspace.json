@@ -107,6 +107,143 @@
           }
         }
       }
+    },
+    "ts-error-app": {
+      "root": "apps/ts-error-app",
+      "sourceRoot": "apps/ts-error-app/src",
+      "projectType": "application",
+      "prefix": "ts-error-app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/ts-error-app",
+            "main": "apps/ts-error-app/src/main.ts",
+            "tsConfig": "apps/ts-error-app/tsconfig.app.json",
+            "assets": ["apps/ts-error-app/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/ts-error-app/src/environments/environment.ts",
+                  "with": "apps/ts-error-app/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "ts-error-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/ts-error-app/tsconfig.app.json",
+              "apps/ts-error-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ts-error-app/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ts-error-app/jest.config.js",
+            "tsConfig": "apps/ts-error-app/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-core-modules": {
+      "root": "libs/api-core/modules",
+      "sourceRoot": "libs/api-core/modules/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/api-core/modules/tsconfig.lib.json",
+              "libs/api-core/modules/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api-core/modules/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-core/modules/jest.config.js",
+            "tsConfig": "libs/api-core/modules/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-core-lib": {
+      "root": "libs/api-core/lib",
+      "sourceRoot": "libs/api-core/lib/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/api-core/lib/tsconfig.lib.json",
+              "libs/api-core/lib/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/api-core/lib/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/api-core/lib/jest.config.js",
+            "tsConfig": "libs/api-core/lib/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-types": {
+      "root": "libs/shared-types",
+      "sourceRoot": "libs/shared-types/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/shared-types/tsconfig.lib.json",
+              "libs/shared-types/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared-types/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared-types/jest.config.js",
+            "tsConfig": "libs/shared-types/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

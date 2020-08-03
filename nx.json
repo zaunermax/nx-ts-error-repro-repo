@@ -28,6 +28,18 @@
     "ts-test-e2e": {
       "tags": [],
       "implicitDependencies": ["ts-test"]
+    },
+    "ts-error-app": {
+      "tags": []
+    },
+    "api-core-modules": {
+      "tags": []
+    },
+    "api-core-lib": {
+      "tags": []
+    },
+    "shared-types": {
+      "tags": []
     }
   }
 }
