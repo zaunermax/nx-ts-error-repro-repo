@@ -1,0 +1,33 @@
+{
+  "npmScope": "ts-error-repo",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "ts-test": {
+      "tags": []
+    },
+    "ts-test-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ts-test"]
+    }
+  }
+}
